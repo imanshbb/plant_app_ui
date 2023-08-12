@@ -44,35 +44,39 @@ class _HomePageState extends State<HomePage> {
           });
         },
         children: <Widget>[
-          Column(
-            children: [
-              Image.asset(
-                'assets/images/plant-one.png',
-                height: 400,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
+          Padding(
+            padding: const EdgeInsets.only(right: 50.0, left: 50.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/plant-one.png',
+                  height: 400,
+                ),
+                const SizedBox(height: 15.0),
+                Text(
                   Constant.titleOne,
-                  style: const TextStyle(
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
                     fontFamily: 'Vazir',
-                    fontSize: 20,
-                    color: Color.fromARGB(255, 121, 120, 120),
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.bold,
+                    color: Constant.primeryColor,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
+                const SizedBox(height: 15.0),
+                Text(
                   Constant.descriptionOne,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontFamily: 'Vazir',
-                    fontSize: 16.0,
-                    color: Color.fromARGB(255, 121, 120, 120),
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

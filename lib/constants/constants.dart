@@ -4,9 +4,9 @@ class Constant {
   static Color primeryColor = Colors.green;
   static Color blackColor = Colors.black;
 
-  static String titleOne = 'گیاهان را بهتر از قبل درک کنید';
+  static String titleOne = 'گیاهان را بهتر از قبل درک کن';
   static String descriptionOne =
-      'در مورد نگه داری گل و گیاهان می توانی اطلاعات کسب کنی';
+      'در مورد نگه داری گل و گیاهان میتوانی اطلاعات کسب کنی';
   static String titleTow = 'با گیاهان جدید آشنا شو';
   static String descriptionTow =
       'رز مشکی یا گل رز دوست داری؟ اینجا می تونی پیداش کنی';
