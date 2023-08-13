@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   Widget indicator(bool isActive) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      height: 10.0,
+      height: 9.0,
       width: isActive ? 20.0 : 8.0,
       margin: const EdgeInsets.all(5.0),
       decoration: BoxDecoration(
@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                 'رد کردن',
                 style: TextStyle(
                   fontFamily: 'Vazir',
-                  fontSize: 17,
+                  fontSize: 16,
                   color: Colors.grey,
                   fontWeight: FontWeight.w900,
                 ),
@@ -94,9 +94,29 @@ class _HomePageState extends State<HomePage> {
           ),
           Positioned(
             bottom: 50.0,
-            left: 10.0,
+            left: 15.0,
             child: Row(
               children: _buildIndecator(),
+            ),
+          ),
+          Positioned(
+            bottom: 40.0,
+            right: 25.0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Constant.primeryColor,
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
           ),
         ],
@@ -125,7 +145,7 @@ class CreatePage extends StatelessWidget {
         children: [
           Image.asset(
             'assets/images/$image',
-            height: 400,
+            height: 390,
           ),
           const SizedBox(height: 15.0),
           Text(
@@ -133,7 +153,7 @@ class CreatePage extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: 'Vazir',
-              fontSize: 25.0,
+              fontSize: 23.0,
               fontWeight: FontWeight.bold,
               color: Constant.primeryColor,
             ),

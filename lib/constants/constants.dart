@@ -10,7 +10,7 @@ class Constant {
   static String titleTow = 'با گیاهان جدید آشنا شو';
   static String descriptionTow =
       'رز مشکی یا گل رز دوست داری؟ اینجا می تونی پیداش کنی';
-  static String titleTree = 'با یک گل بهار نمی شود، گل بکار';
+  static String titleTree = 'با یک گل بهار نمیشود،گل بکار';
   static String descriptionTree =
       'هر گلی نیاز داشته باشید در این اپلیکشن پیدا میکنید';
 }
