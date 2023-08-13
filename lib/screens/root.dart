@@ -1,9 +1,12 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/screens/Cart_Page.dart';
 import 'package:flutter_application_6/screens/Favorit_Page.dart';
 import 'package:flutter_application_6/screens/home_page.dart';
 import 'package:flutter_application_6/screens/profile_page.dart';
+import 'package:flutter_application_6/screens/scan_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -42,18 +45,58 @@ class _RootPageState extends State<RootPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0.0,
-        leading: Icon(
-          Icons.notifications,
-          color: Constant.blackColor,
-          size: 50.0,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Icon(
+              Icons.notifications,
+              color: Constant.blackColor,
+              size: 35.0,
+            ),
+            Text(
+              appBarTitle[pageIndex],
+              style: TextStyle(
+                fontFamily: 'Vazir',
+                fontSize: 25.0,
+                color: Constant.blackColor,
+              ),
+            ),
+          ],
         ),
-        title: Text(
-          appBarTitle[pageIndex],
-          style: const TextStyle(
-            fontFamily: 'Vazir',
-            fontSize: 45.0,
-          ),
+      ),
+      body: IndexedStack(
+        index: pageIndex,
+        children: pages,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            PageTransition(
+              child: const ScanPage(),
+              type: PageTransitionType.bottomToTop,
+            ),
+          );
+        },
+        backgroundColor: Constant.primeryColor,
+        child: Image.asset(
+          'assets/images/code-scan-two.png',
+          height: 30.0,
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        icons: icons,
+        splashColor: Constant.primeryColor,
+        activeColor: Constant.primeryColor,
+        inactiveColor: Colors.black.withOpacity(0.5),
+        activeIndex: pageIndex,
+        gapLocation: GapLocation.center,
+        onTap: (int index) {
+          setState(() {
+            pageIndex = index;
+          });
+        },
       ),
     );
   }
