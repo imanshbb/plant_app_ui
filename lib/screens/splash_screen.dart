@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
+import 'package:flutter_application_6/screens/root.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SplashScreenState extends State<SplashScreen> {
   final PageController _pageController = PageController(initialPage: 0);
   int currentIndex = 0;
 
@@ -133,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return const LoginPage();
+                            return const RootPage();
                           },
                         ),
                       );
@@ -200,19 +201,5 @@ class CreatePage extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }
