@@ -48,7 +48,16 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.only(right: 20.0, top: 20.0),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return const LoginPage();
+                    },
+                  ),
+                );
+              },
               child: const Text(
                 'رد کردن',
                 style: TextStyle(
@@ -110,7 +119,26 @@ class _HomePageState extends State<HomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (currentIndex < 2) {
+                      currentIndex++;
+                      if (currentIndex < 3) {
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.linear,
+                        );
+                      }
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return const LoginPage();
+                          },
+                        ),
+                      );
+                    }
+                  },
                   icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.white,
@@ -172,5 +200,19 @@ class CreatePage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold();
   }
 }
