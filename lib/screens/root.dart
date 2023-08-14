@@ -29,7 +29,7 @@ class _RootPageState extends State<RootPage> {
     Icons.home,
     Icons.favorite,
     Icons.shopping_cart,
-    Icons.people,
+    Icons.account_circle_rounded,
   ];
 
   List<String> appBarTitle = [
