@@ -225,7 +225,7 @@ class _HomePageState extends State<HomePage> {
             ),
             //new plant - product 2
             Container(
-              height: size.height * 0.4,
+              height: size.height * 0.25,
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListView.builder(
                 itemCount: plant.length,
