@@ -113,6 +113,7 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   return Container(
                     width: 200.0,
+                    margin: const EdgeInsets.symmetric(horizontal: 20.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
                       color: Constant.primeryColor.withOpacity(0.8),
@@ -143,6 +144,62 @@ class _HomePageState extends State<HomePage> {
                               ),
                               color: Constant.primeryColor,
                             ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 50.0,
+                          left: 50.0,
+                          right: 50.0,
+                          top: 50.0,
+                          child: Image.asset(plant[index].imageURL),
+                        ),
+                        Positioned(
+                          bottom: 15.0,
+                          left: 20.0,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.0),
+                              color: Colors.white,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0,
+                                vertical: 2.0,
+                              ),
+                              child: Text(
+                                r'$' + plant[index].price.toString(),
+                                style: TextStyle(
+                                  color: Constant.primeryColor,
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 15.0,
+                          right: 20.0,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                plant[index].category,
+                                style: const TextStyle(
+                                  fontFamily: 'Vazir',
+                                  fontSize: 14.0,
+                                  color: Colors.white70,
+                                ),
+                              ),
+                              Text(
+                                plant[index].plantName,
+                                style: const TextStyle(
+                                  fontFamily: 'Vazir',
+                                  fontSize: 16.0,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
