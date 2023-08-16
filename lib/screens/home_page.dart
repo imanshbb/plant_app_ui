@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
+import 'package:flutter_application_6/screens/detalepage.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -103,7 +105,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             //product One
-
             SizedBox(
               height: size.height * 0.3,
               child: ListView.builder(
@@ -111,99 +112,112 @@ class _HomePageState extends State<HomePage> {
                 reverse: true,
                 itemCount: plant.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: 200.0,
-                    margin: const EdgeInsets.symmetric(horizontal: 20.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Constant.primeryColor.withOpacity(0.8),
-                    ),
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned(
-                          top: 10.0,
-                          right: 20.0,
-                          child: Container(
-                            width: 40.0,
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50.0),
-                              color: Colors.white,
-                            ),
-                            child: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  isFavorit1(plant[index].isFavorated);
-                                });
-                              },
-                              icon: Icon(
-                                plant[index].isFavorated == true
-                                    ? Icons.favorite
-                                    : Icons.favorite_border_outlined,
-                                size: 20.0,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: DetilePage(id: plant[index].plantId),
+                          type: PageTransitionType.bottomToTop,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 200.0,
+                      margin: const EdgeInsets.symmetric(horizontal: 20.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Constant.primeryColor.withOpacity(0.8),
+                      ),
+                      child: Stack(
+                        children: <Widget>[
+                          Positioned(
+                            top: 10.0,
+                            right: 20.0,
+                            child: Container(
+                              width: 40.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50.0),
+                                color: Colors.white,
                               ),
-                              color: Constant.primeryColor,
+                              child: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    bool favorit =
+                                        isFavorit1(plant[index].isFavorated);
+                                    plant[index].isFavorated = favorit;
+                                  });
+                                },
+                                icon: Icon(
+                                  plant[index].isFavorated == true
+                                      ? Icons.favorite
+                                      : Icons.favorite_border_outlined,
+                                  size: 20.0,
+                                ),
+                                color: Constant.primeryColor,
+                              ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 50.0,
-                          left: 50.0,
-                          right: 50.0,
-                          top: 50.0,
-                          child: Image.asset(plant[index].imageURL),
-                        ),
-                        Positioned(
-                          bottom: 15.0,
-                          left: 20.0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.0),
-                              color: Colors.white,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0,
-                                vertical: 2.0,
+                          Positioned(
+                            bottom: 50.0,
+                            left: 50.0,
+                            right: 50.0,
+                            top: 50.0,
+                            child: Image.asset(plant[index].imageURL),
+                          ),
+                          Positioned(
+                            bottom: 15.0,
+                            left: 20.0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20.0),
+                                color: Colors.white,
                               ),
-                              child: Text(
-                                r'$' + plant[index].price.toString(),
-                                style: TextStyle(
-                                  color: Constant.primeryColor,
-                                  fontFamily: 'Vazir',
-                                  fontSize: 16.0,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10.0,
+                                  vertical: 2.0,
+                                ),
+                                child: Text(
+                                  r'$' + plant[index].price.toString(),
+                                  style: TextStyle(
+                                    color: Constant.primeryColor,
+                                    fontFamily: 'Vazir',
+                                    fontSize: 16.0,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 15.0,
-                          right: 20.0,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              Text(
-                                plant[index].category,
-                                style: const TextStyle(
-                                  fontFamily: 'Vazir',
-                                  fontSize: 14.0,
-                                  color: Colors.white70,
+                          Positioned(
+                            bottom: 15.0,
+                            right: 20.0,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                Text(
+                                  plant[index].category,
+                                  style: const TextStyle(
+                                    fontFamily: 'Vazir',
+                                    fontSize: 14.0,
+                                    color: Colors.white70,
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                plant[index].plantName,
-                                style: const TextStyle(
-                                  fontFamily: 'Vazir',
-                                  fontSize: 16.0,
-                                  color: Colors.white70,
-                                  fontWeight: FontWeight.bold,
+                                Text(
+                                  plant[index].plantName,
+                                  style: const TextStyle(
+                                    fontFamily: 'Vazir',
+                                    fontSize: 16.0,
+                                    color: Colors.white70,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -230,85 +244,96 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: plant.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    height: 80.0,
-                    width: size.width,
-                    margin: const EdgeInsets.symmetric(vertical: 10.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Constant.primeryColor.withOpacity(0.1),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 8.0, right: 5.0),
-                              child: Image.asset(
-                                'assets/images/PriceUnit-green.png',
-                                height: 20.0,
-                              ),
-                            ),
-                            Text(
-                              plant[index].price.toString(),
-                              style: TextStyle(
-                                fontFamily: 'Vazir',
-                                color: Constant.primeryColor,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 20.0,
-                              ),
-                            ),
-                          ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: DetilePage(id: plant[index].plantId),
+                          type: PageTransitionType.bottomToTop,
                         ),
-                        Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Container(
-                              width: 60.0,
-                              height: 60.0,
-                              decoration: BoxDecoration(
-                                color: Constant.primeryColor.withOpacity(0.8),
-                                shape: BoxShape.circle,
+                      );
+                    },
+                    child: Container(
+                      height: 80.0,
+                      width: size.width,
+                      margin: const EdgeInsets.symmetric(vertical: 10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: Constant.primeryColor.withOpacity(0.1),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, right: 5.0),
+                                child: Image.asset(
+                                  'assets/images/PriceUnit-green.png',
+                                  height: 20.0,
+                                ),
                               ),
-                            ),
-                            Positioned(
-                              bottom: 5.0,
-                              right: 0.0,
-                              left: 0.0,
-                              child: Image.asset(
-                                plant[index].imageURL,
-                                height: 75.0,
+                              Text(
+                                plant[index].price.toString(),
+                                style: TextStyle(
+                                  fontFamily: 'Vazir',
+                                  color: Constant.primeryColor,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 20.0,
+                                ),
                               ),
-                            ),
-                            Positioned(
-                              bottom: 5.0,
-                              right: 80.0,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: <Widget>[
-                                  Text(
-                                    plant[index].category,
-                                    style: const TextStyle(
-                                      fontFamily: 'Vazir',
-                                      fontSize: 13.0,
+                            ],
+                          ),
+                          Stack(
+                            clipBehavior: Clip.none,
+                            children: [
+                              Container(
+                                width: 60.0,
+                                height: 60.0,
+                                decoration: BoxDecoration(
+                                  color: Constant.primeryColor.withOpacity(0.8),
+                                  shape: BoxShape.circle,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5.0,
+                                right: 0.0,
+                                left: 0.0,
+                                child: Image.asset(
+                                  plant[index].imageURL,
+                                  height: 75.0,
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 5.0,
+                                right: 80.0,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text(
+                                      plant[index].category,
+                                      style: const TextStyle(
+                                        fontFamily: 'Vazir',
+                                        fontSize: 13.0,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    plant[index].plantName,
-                                    style: TextStyle(
-                                      fontFamily: 'Vazir',
-                                      fontSize: 18.0,
-                                      color: Constant.blackColor,
+                                    Text(
+                                      plant[index].plantName,
+                                      style: TextStyle(
+                                        fontFamily: 'Vazir',
+                                        fontSize: 18.0,
+                                        color: Constant.blackColor,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
