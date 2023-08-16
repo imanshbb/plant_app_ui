@@ -12,8 +12,10 @@ class DetilePage extends StatefulWidget {
 
 class _DetilePageState extends State<DetilePage> {
   List<Plant> plant = Plant.plantList;
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
         child: Stack(
@@ -62,23 +64,35 @@ class _DetilePageState extends State<DetilePage> {
             //info
             Positioned(
               top: 100.0,
-              right: 40.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  infoflower(
-                    text: 'اندازه‌گیاه',
-                    info: plant[widget.id].size,
-                  ),
-                  infoflower(
-                    text: 'رطوبت‌هوا',
-                    info: plant[widget.id].humidity.toString(),
-                  ),
-                  infoflower(
-                    text: 'دمای‌نگهداری',
-                    info: plant[widget.id].temperature,
-                  ),
-                ],
+              right: 0.0,
+              child: Container(
+                padding: const EdgeInsets.all(0.0),
+                width: size.width * 0.8,
+                height: size.height * 0.8,
+                child: Stack(
+                  children: [
+                    Positioned(
+                      right: 40.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          infoflower(
+                            text: 'اندازه‌گیاه',
+                            info: plant[widget.id].size,
+                          ),
+                          infoflower(
+                            text: 'رطوبت‌هوا',
+                            info: plant[widget.id].humidity.toString(),
+                          ),
+                          infoflower(
+                            text: 'دمای‌نگهداری',
+                            info: plant[widget.id].temperature,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
