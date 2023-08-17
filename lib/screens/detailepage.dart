@@ -2,30 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
 
-class DetilePage extends StatefulWidget {
+class DetailePage extends StatefulWidget {
   final int id;
-  const DetilePage({super.key, required this.id});
+  const DetailePage({super.key, required this.id});
 
   @override
-  State<DetilePage> createState() => _DetilePageState();
+  State<DetailePage> createState() => _DetailePageState();
 }
 
-class _DetilePageState extends State<DetilePage> {
+class _DetailePageState extends State<DetailePage> {
   List<Plant> plant = Plant.plantList;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Constant.primeryColor.withOpacity(0.6),
-        elevation: 0.0,
-        child: const Icon(
-          Icons.shopping_cart_outlined,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: SafeArea(
         child: Stack(
           children: <Widget>[
@@ -91,6 +82,7 @@ class _DetilePageState extends State<DetilePage> {
                         height: 350.0,
                       ),
                     ),
+                    //text info
                     Positioned(
                       top: 80.0,
                       right: 40.0,
@@ -140,9 +132,9 @@ class _DetilePageState extends State<DetilePage> {
                       child: Text(
                         plant[widget.id].plantName,
                         style: TextStyle(
-                          fontFamily: 'Vazir',
+                          fontFamily: 'Lalezar',
                           color: Constant.primeryColor,
-                          fontSize: 30.0,
+                          fontSize: 32.0,
                           fontWeight: FontWeight.w900,
                         ),
                       ),
@@ -191,51 +183,85 @@ class _DetilePageState extends State<DetilePage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
-                        right: 20.0,
-                        left: 20.0,
+                        right: 23.0,
+                        left: 23.0,
                         top: 20.0,
                       ),
                       child: Text(
                         plant[widget.id].decription,
                         textDirection: TextDirection.rtl,
                         textAlign: TextAlign.justify,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w600,
-                          // color: Constant.blackColor,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          height: 1.8,
+                          fontFamily: 'IranSans',
+                          color: Constant.blackColor.withOpacity(0.8),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 23.0, right: 20.0, left: 90.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Constant.primeryColor,
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 50.0,
-                                vertical: 10.0,
-                              ),
-                              child: Text(
-                                'افزودن‌‌به‌سبدخرید',
-                                style: TextStyle(
-                                  fontFamily: 'Vazir',
-                                  fontSize: 20.0,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      //button bottom
+      floatingActionButton: SizedBox(
+        height: 50.0,
+        width: size.width * 0.9,
+        child: Row(
+          children: <Widget>[
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Constant.primeryColor.withOpacity(0.5),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0.0, 1.1),
+                      blurRadius: 0.5,
+                      color: Constant.primeryColor.withOpacity(0.3),
                     ),
                   ],
+                ),
+                child: const Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(width: 20.0),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    color: Constant.primeryColor,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0.0, 1.1),
+                        blurRadius: 0.5,
+                        color: Constant.primeryColor.withOpacity(0.3),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'افزودن‌ ‌به‌ سبد خرید',
+                      style: TextStyle(
+                        fontFamily: 'Lalezar',
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -265,8 +291,8 @@ class PlantInfo extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              fontFamily: 'Vazir',
-              fontSize: 18.0,
+              fontFamily: 'Lalezar',
+              fontSize: 20.0,
               color: Constant.blackColor,
               fontWeight: FontWeight.w900,
             ),

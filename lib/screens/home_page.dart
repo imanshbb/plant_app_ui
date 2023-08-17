@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         PageTransition(
-                          child: DetilePage(id: plant[index].plantId),
+                          child: DetailePage(id: plant[index].plantId),
                           type: PageTransitionType.bottomToTop,
                         ),
                       );
@@ -249,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         PageTransition(
-                          child: DetilePage(id: plant[index].plantId),
+                          child: DetailePage(id: plant[index].plantId),
                           type: PageTransitionType.bottomToTop,
                         ),
                       );
