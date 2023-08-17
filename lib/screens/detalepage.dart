@@ -63,8 +63,10 @@ class _DetilePageState extends State<DetilePage> {
             ),
             //info
             Positioned(
-              top: 100.0,
               right: 0.0,
+              left: 0.0,
+              bottom: 0.0,
+              top: 0.0,
               child: Container(
                 padding: const EdgeInsets.all(0.0),
                 width: size.width * 0.8,
@@ -72,6 +74,7 @@ class _DetilePageState extends State<DetilePage> {
                 child: Stack(
                   children: [
                     Positioned(
+                      top: 100.0,
                       right: 40.0,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -89,6 +92,91 @@ class _DetilePageState extends State<DetilePage> {
                             info: plant[widget.id].temperature,
                           ),
                         ],
+                      ),
+                    ),
+                    //image plant
+                    Positioned(
+                      top: 100.0,
+                      left: 30.0,
+                      child: Image.asset(
+                        plant[widget.id].imageURL,
+                        height: 370.0,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 0.0,
+                      child: Container(
+                        height: size.height * 0.42,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                          color: Constant.primeryColor.withOpacity(0.5),
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                right: 40.0,
+                                top: 80.0,
+                              ),
+                              child: Text(
+                                plant[widget.id].plantName,
+                                style: TextStyle(
+                                  fontFamily: 'Vazir',
+                                  color: Constant.primeryColor,
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: <Widget>[
+                                  Icon(
+                                    Icons.star,
+                                    size: 30.0,
+                                    color: Constant.primeryColor,
+                                  ),
+                                  Text(
+                                    plant[widget.id].rating.toString(),
+                                    style: TextStyle(
+                                      fontFamily: 'Vazir',
+                                      fontSize: 20.0,
+                                      color: Constant.primeryColor,
+                                      fontWeight: FontWeight.w900,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 180.0),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: Image.asset(
+                                      'assets/images/PriceUnit-green.png',
+                                      height: 20.0,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 40.0),
+                                    child: Text(
+                                      plant[widget.id].price.toString(),
+                                      style: TextStyle(
+                                        fontFamily: 'Vazir',
+                                        fontSize: 30.0,
+                                        fontWeight: FontWeight.w900,
+                                        color: Constant.blackColor,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
