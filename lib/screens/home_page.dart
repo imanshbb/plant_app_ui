@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
-import 'package:flutter_application_6/screens/detalepage.dart';
+import 'package:flutter_application_6/screens/detailepage.dart';
 import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
