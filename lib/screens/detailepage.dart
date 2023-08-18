@@ -12,6 +12,9 @@ class DetailePage extends StatefulWidget {
 
 class _DetailePageState extends State<DetailePage> {
   List<Plant> plant = Plant.plantList;
+  addToCart(cart) {
+    return !cart;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -228,32 +231,48 @@ class _DetailePageState extends State<DetailePage> {
                     ),
                   ],
                 ),
-                child: const Icon(
-                  Icons.shopping_cart,
-                  color: Colors.white,
+                child: GestureDetector(
+                  onTap: () {
+                    // final listcart = Plant.plantList;
+                    // Navigator.push(
+                    //   context,
+                    //   PageTransition(
+                    //     child: CartPage(listcart: listcart),
+                    //     type: PageTransitionType.bottomToTop,
+                    //   ),
+                    // );
+                  },
+                  child: const Icon(
+                    Icons.shopping_cart,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
             const SizedBox(width: 20.0),
             Expanded(
-              child: GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 50.0,
-                  height: 50.0,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                    color: Constant.primeryColor,
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(0.0, 1.1),
-                        blurRadius: 0.5,
-                        color: Constant.primeryColor.withOpacity(0.3),
-                      ),
-                    ],
-                  ),
-                  child: const Center(
-                    child: Text(
+              child: Container(
+                width: 50.0,
+                height: 50.0,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  color: Constant.primeryColor,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0.0, 1.1),
+                      blurRadius: 0.5,
+                      color: Constant.primeryColor.withOpacity(0.3),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      final added =
+                          addToCart(Plant.plantList[widget.id].isSelected);
+                      Plant.plantList[widget.id].isSelected = added;
+                    },
+                    child: const Text(
                       'افزودن‌ ‌به‌ سبد خرید',
                       style: TextStyle(
                         fontFamily: 'Lalezar',
