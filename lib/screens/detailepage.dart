@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
+import 'package:flutter_application_6/screens/cart_page.dart';
+import 'package:page_transition/page_transition.dart';
 
 class DetailePage extends StatefulWidget {
   final int id;
@@ -215,64 +217,86 @@ class _DetailePageState extends State<DetailePage> {
         width: size.width * 0.9,
         child: Row(
           children: <Widget>[
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Constant.primeryColor.withOpacity(0.5),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0.0, 1.1),
-                      blurRadius: 0.5,
-                      color: Constant.primeryColor.withOpacity(0.3),
+            Container(
+              width: 50.0,
+              height: 50.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Constant.primeryColor.withOpacity(0.5),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0.0, 1.1),
+                    blurRadius: 0.5,
+                    color: plant[widget.id].isSelected == true
+                        ? Constant.primeryColor
+                        : Constant.primeryColor.withOpacity(0.2),
+                  ),
+                ],
+              ),
+              child: InkResponse(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      child: CartPage(listcart: Plant.addedToCartPlants()),
+                      type: PageTransitionType.bottomToTop,
+                    ),
+                  );
+                },
+                child: Stack(
+                  children: [
+                    const Positioned(
+                      bottom: 12.0,
+                      right: 12.0,
+                      child: Icon(
+                        Icons.shopping_cart,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Positioned(
+                      top: 2.0,
+                      right: plant[widget.id].isSelected == true ? 5.0 : 3.0,
+                      child: Text(
+                        plant[widget.id].isSelected == true ? '1' : '0',
+                        style: TextStyle(
+                          fontFamily: 'Lalezar',
+                          fontSize: 30.0,
+                          color: plant[widget.id].isSelected == true
+                              ? Colors.black
+                              : Colors.black,
+                        ),
+                      ),
                     ),
                   ],
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    // final listcart = Plant.plantList;
-                    // Navigator.push(
-                    //   context,
-                    //   PageTransition(
-                    //     child: CartPage(listcart: listcart),
-                    //     type: PageTransitionType.bottomToTop,
-                    //   ),
-                    // );
-                  },
-                  child: const Icon(
-                    Icons.shopping_cart,
-                    color: Colors.white,
-                  ),
                 ),
               ),
             ),
             const SizedBox(width: 20.0),
             Expanded(
-              child: Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                  color: Constant.primeryColor,
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0.0, 1.1),
-                      blurRadius: 0.5,
-                      color: Constant.primeryColor.withOpacity(0.3),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: GestureDetector(
-                    onTap: () {
-                      final added =
-                          addToCart(Plant.plantList[widget.id].isSelected);
-                      Plant.plantList[widget.id].isSelected = added;
-                    },
-                    child: const Text(
+              child: InkResponse(
+                onTap: () {
+                  setState(() {
+                    final added =
+                        addToCart(Plant.plantList[widget.id].isSelected);
+                    Plant.plantList[widget.id].isSelected = added;
+                  });
+                },
+                child: Container(
+                  width: 50.0,
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                    color: Constant.primeryColor,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0.0, 1.1),
+                        blurRadius: 0.5,
+                        color: Constant.primeryColor.withOpacity(0.3),
+                      ),
+                    ],
+                  ),
+                  child: const Center(
+                    child: Text(
                       'افزودن‌ ‌به‌ سبد خرید',
                       style: TextStyle(
                         fontFamily: 'Lalezar',

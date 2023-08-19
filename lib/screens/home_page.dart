@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
 import 'package:flutter_application_6/screens/detailepage.dart';
-import 'package:flutter_application_6/screens/widget/palntWidget.dart';
+import 'package:flutter_application_6/screens/widget/plantwidget.dart';
 import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
@@ -241,7 +241,7 @@ class _HomePageState extends State<HomePage> {
             ),
             //new plant - product 2
             Container(
-              height: size.height * 0.25,
+              height: size.height * 0.35,
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),

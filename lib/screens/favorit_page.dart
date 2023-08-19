@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_application_6/models/plant.dart';
 
-import 'package:flutter_application_6/screens/widget/palntWidget.dart';
+import 'package:flutter_application_6/screens/widget/plantwidget.dart';
 
 class FavoritePage extends StatefulWidget {
   final List<Plant> listfavorit;
@@ -26,7 +26,10 @@ class _FavoritePageState extends State<FavoritePage> {
               physics: const BouncingScrollPhysics(),
               itemCount: widget.listfavorit.length,
               itemBuilder: (context, index) {
-                return NewWidgetPlant(plant: plant, index: index);
+                return Padding(
+                  padding: const EdgeInsets.only(right: 12.0, left: 12.0),
+                  child: NewWidgetPlant(plant: plant, index: index),
+                );
               },
             )
           : Center(
