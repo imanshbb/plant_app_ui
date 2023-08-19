@@ -19,11 +19,13 @@ class _CameraState extends State<Camera> {
         body: Stack(
           children: [
             MobileScanner(
-              onDetect: (capture) {
-                final List<Barcode> barcodes = capture.barcodes;
-
-                for (final barcode in barcodes) {
-                  debugPrint('Barcode found! ${barcode.rawValue}');
+              controller: cameraController,
+              onDetect: (barcoded) {
+                if (barcoded.raw == null) {
+                  debugPrint('Failed to scan Barcode');
+                } else {
+                  final String code = barcoded.raw!;
+                  debugPrint('Barcode found! $code');
                 }
               },
             ),

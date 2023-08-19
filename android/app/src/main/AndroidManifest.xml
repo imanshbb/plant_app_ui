@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- get permissions(اجازه دسترسی) on android i was here-->
     <application
-        android:label="flutter_application_6"
+        android:label="PlantApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
