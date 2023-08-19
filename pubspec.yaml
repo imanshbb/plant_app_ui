@@ -39,14 +39,14 @@ dependencies:
   animated_bottom_navigation_bar: ^1.2.0
   mobile_scanner: ^3.4.1
   
-# dev_dependencies:
-#   flutter_launcher_icons: "^0.13.1"
-# flutter_icons:
-#   android: true
-#   ios: true
-#   image_path: "assets/launcher_icon/icon-new.png"
-#   adaptive_icon_background: "#296e48"
-#   adaptive_icon_foreground: "assets/launcher_icon/icon-new.png"
+dev_dependencies:
+  flutter_launcher_icons: "^0.13.1"
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/launcher_icon/icon-new.png"
+  adaptive_icon_background: "#296e48"
+  adaptive_icon_foreground: "assets/launcher_icon/icon-new.png"
 
   flutter_test:
     sdk: flutter
