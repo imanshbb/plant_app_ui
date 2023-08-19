@@ -254,8 +254,8 @@ class _DetailePageState extends State<DetailePage> {
                       ),
                     ),
                     Positioned(
-                      top: 2.0,
-                      right: plant[widget.id].isSelected == true ? 5.0 : 3.0,
+                      top: 5.0,
+                      right: plant[widget.id].isSelected == true ? 5.0 : 4.0,
                       child: Text(
                         plant[widget.id].isSelected == true ? '1' : '0',
                         style: TextStyle(

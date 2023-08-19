@@ -56,13 +56,13 @@ class _RootPageState extends State<RootPage> {
             Icon(
               Icons.notifications,
               color: Constant.blackColor,
-              size: 35.0,
+              size: 30.0,
             ),
             Text(
               appBarTitle[pageIndex],
               style: TextStyle(
                 fontFamily: 'Vazir',
-                fontSize: 25.0,
+                fontSize: 20.0,
                 color: Constant.blackColor,
               ),
             ),
