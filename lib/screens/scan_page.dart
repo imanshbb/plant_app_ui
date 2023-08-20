@@ -3,6 +3,7 @@ import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/screens/camera_page.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({super.key});
@@ -13,6 +14,18 @@ class ScanPage extends StatefulWidget {
 
 class _ScanPageState extends State<ScanPage> {
   MobileScannerController cameraController = MobileScannerController();
+
+  // _onShare method:
+  _onshare(context) async {
+    final box = context.findRenderObject() as RenderBox?;
+
+    await Share.share(
+      'share link',
+      subject: 'share Scan',
+      sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,16 +58,21 @@ class _ScanPageState extends State<ScanPage> {
                     ),
                   ),
                   //share icon
-                  Container(
-                    width: 40.0,
-                    height: 40.0,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Constant.primeryColor.withOpacity(0.15),
-                    ),
-                    child: Icon(
-                      Icons.share,
-                      color: Constant.primeryColor,
+                  GestureDetector(
+                    onTap: () {
+                      _onshare(context);
+                    },
+                    child: Container(
+                      width: 40.0,
+                      height: 40.0,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Constant.primeryColor.withOpacity(0.15),
+                      ),
+                      child: Icon(
+                        Icons.share,
+                        color: Constant.primeryColor,
+                      ),
                     ),
                   ),
                 ],

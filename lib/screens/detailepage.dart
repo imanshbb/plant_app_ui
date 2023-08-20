@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
 import 'package:flutter_application_6/screens/cart_page.dart';
+import 'package:flutter_application_6/screens/widget/scaffoldmessenger.dart';
 import 'package:page_transition/page_transition.dart';
 
 class DetailePage extends StatefulWidget {
@@ -243,6 +244,7 @@ class _DetailePageState extends State<DetailePage> {
                     ),
                   );
                 },
+                //state shop button
                 child: Stack(
                   children: [
                     const Positioned(
@@ -272,14 +274,29 @@ class _DetailePageState extends State<DetailePage> {
               ),
             ),
             const SizedBox(width: 20.0),
+            //add to shop button
             Expanded(
               child: InkResponse(
                 onTap: () {
-                  setState(() {
-                    final added =
-                        addToCart(Plant.plantList[widget.id].isSelected);
-                    Plant.plantList[widget.id].isSelected = added;
-                  });
+                  setState(
+                    () {
+                      //add to cart page code
+                      final added =
+                          addToCart(Plant.plantList[widget.id].isSelected);
+                      Plant.plantList[widget.id].isSelected = added;
+                      //end add to cart page code
+
+                      //ScaffoldMessenger
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnacBarWidget(
+                          text: plant[widget.id].isSelected == true
+                              ? 'به سبد خرید اضافه شد'
+                              : 'از سبد خرید حذف شد',
+                        ) as SnackBar,
+                      );
+                      //end ScaffoldMessenger
+                    },
+                  );
                 },
                 child: Container(
                   width: 50.0,
