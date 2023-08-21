@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_6/constants/constants.dart';
 import 'package:flutter_application_6/models/plant.dart';
 import 'package:flutter_application_6/screens/cart_page.dart';
-import 'package:flutter_application_6/screens/widget/scaffoldmessenger.dart';
+
 import 'package:page_transition/page_transition.dart';
 
 class DetailePage extends StatefulWidget {
@@ -286,13 +286,42 @@ class _DetailePageState extends State<DetailePage> {
                       Plant.plantList[widget.id].isSelected = added;
                       //end add to cart page code
 
-                      //ScaffoldMessenger
+                      //ScaffoldMessengertext:
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnacBarWidget(
-                          text: plant[widget.id].isSelected == true
-                              ? 'به سبد خرید اضافه شد'
-                              : 'از سبد خرید حذف شد',
-                        ) as SnackBar,
+                        SnackBar(
+                          content: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SnackBarAction(
+                                textColor: Constant.primeryColor.withOpacity(1),
+                                label: 'Action',
+                                onPressed: () {
+                                  // Code to execute.
+                                },
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 10.0),
+                                child: Text(
+                                  plant[widget.id].isSelected == true
+                                      ? 'به سبد خرید اضافه شد'
+                                      : 'از سبد خرید حذف شد',
+                                  textDirection: TextDirection.rtl,
+                                  style: const TextStyle(fontFamily: 'Lalezar'),
+                                ),
+                              ),
+                            ],
+                          ),
+                          duration: const Duration(milliseconds: 1500),
+                          width: 280.0, // Width of the SnackBar.
+                          padding: const EdgeInsets.symmetric(
+                            horizontal:
+                                8.0, // Inner padding for SnackBar content.
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
                       );
                       //end ScaffoldMessenger
                     },
